@@ -2,8 +2,9 @@ const express = require("express");
 const path = require("path");
 const methodOverride = require("method-override");
 
-const router = require("./src/routes/register");
-const booksRouter = require("./src/routes/books");
+const homeRouter = require("./src/routes/indexRouter") // rota para home page
+ const authRouter = require("./src/routes/authRouter"); // Rota de registro de usuario
+const booksRouter = require("./src/routes/booksRouter"); // Rota para adicionar pdf
 require("./config/dataBase");
 
 const app = express();
@@ -14,7 +15,9 @@ app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", router);
+
+app.use("/", homeRouter)
+app.use("/", authRouter);
 app.use("/", booksRouter);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

@@ -23,7 +23,7 @@ router.post("/books", upload.single("pdf"), async (req, res) => {
 });
 
 router.get("/books", async (req, res) => {
-  res.sendFile(path.join(__dirname, "../../public/books.html"));
+  res.sendFile(path.join(__dirname, "../../public/estante/books.html"));
 });
 
 module.exports = router;
